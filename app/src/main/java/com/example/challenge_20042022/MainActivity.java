@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.lang.invoke.WrongMethodTypeException;
@@ -25,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
     TextView sumTextView;
     TextView timerTextView;
     Button playAgainButton;
+    RelativeLayout gameRelativeLayout;
 
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int locationOfCorrectAnswer;
     int score = 0;
     int numberOfQuestions = 0;
 
-    public void playAgain() {
+    public void playAgain(View view) {
 
         score = 0;
         numberOfQuestions = 0;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         generateQuestion();
 
-        new CountDownTimer(3100, 1000) {
+        new CountDownTimer(30100, 1000) {
 
             @Override
             public void onTick(long l) {
@@ -132,8 +134,9 @@ public class MainActivity extends AppCompatActivity {
     public void start(View view) {
 
         startButton.setVisibility(View.INVISIBLE);
+        gameRelativeLayout.setVisibility(RelativeLayout.VISIBLE);
 
-
+        playAgain(findViewById(R.id.playAgainButton));
     }
 
     @Override
@@ -151,8 +154,9 @@ public class MainActivity extends AppCompatActivity {
         pointsTextView = (TextView)findViewById(R.id.pointsTextView);
         timerTextView = (TextView)findViewById(R.id.timerTextView);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
+        gameRelativeLayout = (RelativeLayout)findViewById(R.id.gameRelativeLayout);
 
-        playAgain();
+
     }
 
 }
