@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         generateQuestion();
 
-        new CountDownTimer(30100, 1000) {
+        new CountDownTimer(5100, 1000) {
 
             @Override
             public void onTick(long l) {
